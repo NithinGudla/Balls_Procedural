@@ -6,14 +6,17 @@ import java.awt.*;
 public class BallGame extends PApplet {
 
     public static final int DIAMETER = 10;
+    public static final int NUMBER_OF_BALLS = 4;
+    public static final String CLASS_NAME = "com.nithin.BallGame";
     Dimension deviceDimensions;
     int screenHeight, screenWidth, canvasHeight, canvasWidth;
     int fifthPartOfHeight;
     int[] balls;
 
+
     public static void main(String[] args){
 
-        PApplet.main("com.nithin.BallGame", args);
+        PApplet.main(CLASS_NAME, args);
     }
 
     @Override
@@ -31,20 +34,20 @@ public class BallGame extends PApplet {
     @Override
     public void setup() {
 
-        balls = new int[4];
-        fifthPartOfHeight = canvasHeight / (balls.length + 1);
+        balls = new int[NUMBER_OF_BALLS];
+        fifthPartOfHeight = canvasHeight / (NUMBER_OF_BALLS + 1);
     }
 
     @Override
     public void draw() {
 
-        for(int i = 0; i < balls.length; i++) {
-            drawCircle(balls[i], (i + 1) * fifthPartOfHeight);
+        for(int i = 0; i < NUMBER_OF_BALLS; i++) {
+            drawBall(balls[i], (i + 1) * fifthPartOfHeight);
             balls[i] += (i + 1);
         }
     }
 
-    private void drawCircle(int x, int y) {
+    private void drawBall(int x, int y) {
 
         ellipse(x, y, DIAMETER, DIAMETER);
     }
